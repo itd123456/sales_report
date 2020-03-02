@@ -2,15 +2,28 @@
 
 	Class Sales
 	{
-		private $host = '192.168.1.167';
-		private $db = 'global_reports';
-		private $user = 'sa';
-		private $pass = '1234';
+		// private $host = '192.168.1.167';
+		// private $db = 'global_reports';
+		// private $user = 'sa';
+		// private $pass = '1234';
+		// private $conn;
+
+		// public function __construct()
+		// {
+		// 	$this->conn = new PDO("sqlsrv:server=".$this->host.";Database=".$this->db, $this->user, $this->pass);
+		// }
+
+		private $host = "localhost";
+		private $user = "network";
+		private $pass = 'P@$$w0rd2020!';
+		private $db = "sales_report";
 		private $conn;
 
 		public function __construct()
 		{
-			$this->conn = new PDO("sqlsrv:server=".$this->host.";Database=".$this->db, $this->user, $this->pass);
+			date_default_timezone_set('Asia/Manila');
+
+			$this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->db, $this->user, $this->pass);
 		}
 
 		public function getTotalSales($first, $last, $table)

@@ -9,14 +9,14 @@
 		private $sofiaConn;
 
 		//Localhost Credentials
-		private $localHost = '192.168.1.167';
-		private $localDB = 'global_reports';
-		private $localUser = 'sa';
-		private $localPass = '1234';
-		private $localConn;
+		// private $localHost = '192.168.1.167';
+		// private $localDB = 'global_reports';
+		// private $localUser = 'sa';
+		// private $localPass = '1234';
+		// private $localConn;
 
 		//Linux Credentials
-		private $mysqlHost = '192.168.0.160';
+		private $mysqlHost = 'localhost';
 		private $mysqlDB = 'sales_report';
 		private $mysqlUser = 'network';
 		private $mysqlPass = 'P@$$w0rd2020!';
@@ -30,7 +30,7 @@
 			//Connection to Sofia
 			$this->sofiaConn = new PDO("sqlsrv:server=".$this->sofiaHost.";Database=".$this->sofiaDB, $this->sofiaUser, $this->sofiaPass);
 			//Connection to Localhost
-			$this->localConn = new PDO("sqlsrv:server=".$this->localHost.";Database=".$this->localDB, $this->localUser, $this->localPass);
+			// $this->localConn = new PDO("sqlsrv:server=".$this->localHost.";Database=".$this->localDB, $this->localUser, $this->localPass);
 
 			$this->mysqlConn = new PDO("mysql:host=".$this->mysqlHost.";dbname=".$this->mysqlDB, $this->mysqlUser, $this->mysqlPass);
 		}
@@ -49,7 +49,11 @@
 			$sql = "SELECT MAX(year)
 					FROM year";
 
-			$stmt = $this->localConn->prepare($sql);
+			// $stmt = $this->localConn->prepare($sql);
+			// $stmt->execute();
+			// $result = $stmt->fetchAll();
+
+			$stmt = $this->mysqlConn->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll();
 
@@ -58,8 +62,8 @@
 				$sql = "INSERT INTO year(year)
 						VALUES($currentYear)";
 
-				$stmt = $this->localConn->prepare($sql);
-				$stmt->execute();
+				// $stmt = $this->localConn->prepare($sql);
+				// $stmt->execute();
 
 				$stmt = $this->mysqlConn->prepare($sql);
 				$stmt->execute();

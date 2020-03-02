@@ -25,7 +25,7 @@ $('#vsYear').on('click', function()
 	$.ajax(
 	{
 		type : "POST",
-		url : "./php/monvsMon.php",
+		url : "./php/monVsMon.php",
 	    data : datas,
 	    dataType: "json",  
 	    success : function(data)
@@ -164,7 +164,7 @@ function pieGraphh()
 	$.ajax(
 	{
 		type : "POST",
-		url : "./php/monvsMon.php",
+		url : "./php/monVsMon.php",
 	    data : datas,
 	    dataType: "json",  
 	    success : function(data)
