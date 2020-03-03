@@ -100,15 +100,25 @@
 				$date = $data[$i]['LOAN_RELEASED_DATE'];
 				$amount = $data[$i]['amount'];
 
-				$sql = "INSERT INTO sure_cycle(branch_code, daily_sales, date_sales)
+				//$area = ['gma_north', 'gma_south', 'north_luzon', 'visayas', 'mindanao', 'sme', 'sure_cycle'];
+
+				$area = ['gma_north', 'gma_south', 'north_luzon', 'visayas', 'mindanao', 'sme'];
+
+				for ($i = 0; $i < count($area); $i++)
+				{
+					$sql = "INSERT INTO $area['$i'](branch_code, daily_sales, date_sales)
 						VALUES('$code', $amount, '$date')";
 
-				// $stmt = $this->localConn->prepare($sql);
-				// $stmt->execute();
-
-				$stmt = $this->mysqlConn->prepare($sql);
-				$stmt->execute();
+					$stmt = $this->mysqlConn->prepare($sql);
+					$stmt->execute();
+				}
 			}
+		}
+
+		public function execQuery($sql)
+		{
+			$stmt = $this->mysqlConn->prepare($sql);
+			$stmt->execute();
 		}
 	}
 ?>
