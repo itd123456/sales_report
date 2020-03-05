@@ -98,21 +98,7 @@
                     color.push("green");
                 }
 
-                if (data[i].branch_code == '510')
-                { 
-                    //push the name of bar
-                    label.push('Digos Trike' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-                }
-                else if (data[i].branch_code == '511')
-                {              
-                    //push name of bar
-                    label.push('SC Koronadal' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-                }
-                else
-                {
-                    //push the name of bar
-                    label.push('SC Panabo' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-                }
+                label.push(data[i]['branch'] + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
             }
 
             var ctx = document.getElementById("myBarChart");
@@ -137,14 +123,14 @@
                       display: false
                     },
                     ticks: {
-                      maxTicksLimit: 6
+                      maxTicksLimit: 60
                     }
                   }],
                   yAxes: [{
                     ticks: {
                       min: 0,
                       max: max,
-                      maxTicksLimit: 5
+                      maxTicksLimit: 15
                     },
                     gridLines: {
                       display: true
@@ -220,21 +206,7 @@
                 color.push("green");
             }
 
-            if (data[i].branch_code == '510')
-            { 
-                //push the name of bar
-                label.push('Digos Trike' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-            }
-            else if (data[i].branch_code == '511')
-            {              
-                //push name of bar
-                label.push('SC Koronadal' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-            }
-            else
-            {
-                //push the name of bar
-                label.push('SC Panabo' + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
-            }
+            label.push(data[i]['branch'] + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
         }
 
         var ctx = document.getElementById("myBarChart");
@@ -259,14 +231,14 @@
                   display: false
                 },
                 ticks: {
-                  maxTicksLimit: 6
+                  maxTicksLimit: 60
                 }
               }],
               yAxes: [{
                 ticks: {
                   min: 0,
                   max: max,
-                  maxTicksLimit: 5
+                  maxTicksLimit: 15
                 },
                 gridLines: {
                   display: true

@@ -1,3 +1,107 @@
+$('#pie_group').change(function()
+{
+    selected = $(this).val();
+    data = {area : selected}
+    
+    $.ajax(
+    {
+        type : "POST",
+        url : "./php/getBranches.php",
+        data : data,
+        dataType : "json",
+        success : function(data)
+        {
+          $('#pie_branch').html('');
+          
+          len = data.length;
+
+          for (var i = 0; i < len; i++)
+          {
+              $('#pie_branch').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+          }
+          $('#pie_branch').append($('<option>', {value:'all', text:'All Branches'}));
+        }
+    });
+})
+
+$('#pie_group1').change(function()
+{
+    selected = $(this).val();
+    data = {area : selected}
+    
+    $.ajax(
+    {
+        type : "POST",
+        url : "./php/getBranches.php",
+        data : data,
+        dataType : "json",
+        success : function(data)
+        {
+          $('#pie_branch1').html('');
+          
+          len = data.length;
+
+          for (var i = 0; i < len; i++)
+          {
+              $('#pie_branch1').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+          }
+          $('#pie_branch1').append($('<option>', {value:'all', text:'All Branches'}));
+        }
+    });
+})
+
+$('#pie_group2').change(function()
+{
+    selected = $(this).val();
+    data = {area : selected}
+    
+    $.ajax(
+    {
+        type : "POST",
+        url : "./php/getBranches.php",
+        data : data,
+        dataType : "json",
+        success : function(data)
+        {
+          $('#pie_branch2').html('');
+          
+          len = data.length;
+
+          for (var i = 0; i < len; i++)
+          {
+              $('#pie_branch2').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+          }
+          $('#pie_branch2').append($('<option>', {value:'all', text:'All Branches'}));
+        }
+    });
+})
+
+$('#pie_group3').change(function()
+{
+    selected = $(this).val();
+    data = {area : selected}
+    
+    $.ajax(
+    {
+        type : "POST",
+        url : "./php/getBranches.php",
+        data : data,
+        dataType : "json",
+        success : function(data)
+        {
+          $('#pie_branch3').html('');
+          
+          len = data.length;
+
+          for (var i = 0; i < len; i++)
+          {
+              $('#pie_branch3').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+          }
+          $('#pie_branch3').append($('<option>', {value:'all', text:'All Branches'}));
+        }
+    });
+})
+
 $('#vsMon').on('click', function()
 {
 	pieGraphh();
@@ -58,8 +162,14 @@ $('#vsYear').on('click', function()
 
 	    	datass.push(total2);
 
-	    	blue = group11 + ' (' + branch11 + ') P ' + formatNumber(total1);
-	    	red =  group22 + ' (' + branch22 + ') P ' + formatNumber(total2);
+	    	hundredPercent = total1 + total2;
+	    	percent1 = total1/(hundredPercent/100);
+	    	percent1 = percent1.toFixed(2);
+	    	percent2 = total2/(hundredPercent/100);
+	    	percent2 = percent2.toFixed(2);
+
+	    	blue = group11 + ' (' + branch11 + ') P ' + formatNumber(total1) + ' (' + percent1 + '%)';
+	    	red =  group22 + ' (' + branch22 + ') P ' + formatNumber(total2) + ' (' + percent2 + '%)';
 
 	    	labels = [blue, red];
 
@@ -160,7 +270,7 @@ function pieGraphh()
 		year2 : $('#pie_year1').val(),
 		time : 'monthly'
 	}
-	console.log(datas);
+	
 	$.ajax(
 	{
 		type : "POST",
@@ -195,6 +305,12 @@ function pieGraphh()
 	    	}
 
 	    	datass.push(total2);
+
+	    	hundredPercent = total1 + total2;
+	    	percent1 = total1/(hundredPercent/100);
+	    	percent1 = percent1.toFixed(2);
+	    	percent2 = total2/(hundredPercent/100);
+	    	percent2 = percent2.toFixed(2);
 
 	    	blue = group11 + ' (' + branch11 + ') ' + month11 + ' ' + year11 + ' ( P ' + formatNumber(total1) + ' )';
 	    	red =  group22 + ' (' + branch22 + ') ' + month22 + ' ' + year22 + ' ( P ' + formatNumber(total2) + ' )';

@@ -9,13 +9,13 @@
 		private $sofiaConn;
 
 		//Localhost Credentials
-		// private $localHost = '192.168.1.167';
-		// private $localDB = 'global_reports';
-		// private $localUser = 'sa';
-		// private $localPass = '1234';
-		// private $localConn;
+		// private $mysqlHost = 'localhost';
+		// private $mysqlDB = 'sales_report';
+		// private $mysqlUser = 'root';
+		// private $mysqlPass = '123456';
+		// private $mysqlConn;
 
-		//Linux Credentials
+		Linux Credentials
 		private $mysqlHost = 'localhost';
 		private $mysqlDB = 'sales_report';
 		private $mysqlUser = 'network';
@@ -89,29 +89,61 @@
 			return $result;
 		}
 
-		public function insertSCData($data)
+		public function getSME($today)
+		{
+			$sql = "SELECT LOAN_BR, SUM(LOAN_AMOUNT_APPROVED) AS amount, LOAN_RELEASED_DATE
+					FROM LM_LOAN
+					WHERE LOAN_RELEASED_DATE = '$today'
+					AND LOAN_BR IN(109,112,114)
+					AND LOAN_STATUS = 5
+					GROUP BY LOAN_BR, LOAN_RELEASED_DATE";
+
+			//prepare the sql query for execution
+			$stmt = $this->sofiaConn->prepare($sql);
+			//execution the query
+			$stmt->execute(array());
+			//rersult of the query
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			return $result;
+		}
+
+		public function getOthers($today, $area)
+		{
+			$sql = "SELECT l.LOAN_BR, SUM(l.LOAN_AMOUNT_APPROVED) AS amount, l.LOAN_RELEASED_DATE
+					FROM LM_LOAN l
+					JOIN PR_BRANCH p
+					ON l.LOAN_BR = p.BRAN_CODE
+					WHERE l.LOAN_RELEASED_DATE = '$today'
+					AND p.BRAN_URL = '$area'
+					AND l.LOAN_STATUS = 5
+					GROUP BY l.LOAN_BR, l.LOAN_RELEASED_DATE";
+
+			//prepare the sql query for execution
+			$stmt = $this->sofiaConn->prepare($sql);
+			//execution the query
+			$stmt->execute(array());
+			//rersult of the query
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			return $result;
+		}
+
+		public function insertSCData($data, $table)
 		{
 			$count = count($data);
 			
-			//print_r($date);
 			for ($i = 0; $i < $count; $i++)
 			{
 				$code = $data[$i]['LOAN_BR'];
 				$date = $data[$i]['LOAN_RELEASED_DATE'];
 				$amount = $data[$i]['amount'];
 
-				//$area = ['gma_north', 'gma_south', 'north_luzon', 'visayas', 'mindanao', 'sme', 'sure_cycle'];
+				$sql = "INSERT INTO $table(branch_code, daily_sales, date_sales)
+					VALUES('$code', $amount, '$date')";
 
-				$area = ['gma_north', 'gma_south', 'north_luzon', 'visayas', 'mindanao', 'sme'];
-
-				for ($i = 0; $i < count($area); $i++)
-				{
-					$sql = "INSERT INTO $area['$i'](branch_code, daily_sales, date_sales)
-						VALUES('$code', $amount, '$date')";
-
-					$stmt = $this->mysqlConn->prepare($sql);
-					$stmt->execute();
-				}
+				$stmt = $this->mysqlConn->prepare($sql);
+				$stmt->execute();
 			}
 		}
 

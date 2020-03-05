@@ -38,6 +38,26 @@
 		$_POST['lastDate2'] = $lastDate2;
 	}
 
+	if ($_POST['branch1'] != 'all')
+	{
+		$_POST['groupBy1'] = "AND branch_code = '".$_POST['branch1']."'
+						   GROUP BY branch_code";
+	}
+	else
+	{
+		$_POST['groupBy1'] = '';
+	}
+
+	if ($_POST['branch2'] != 'all')
+	{
+		$_POST['groupBy2'] = "AND branch_code = '".$_POST['branch2']."'
+						   GROUP BY branch_code";
+	}
+	else
+	{
+		$_POST['groupBy2'] = '';
+	}
+
 	$data = new Sales();
 
 	$data->monVsMon($_POST);

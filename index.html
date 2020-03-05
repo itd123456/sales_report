@@ -116,12 +116,16 @@
             <label style="font-size: 12px">Group : </label>
             <select style="font-size: 12px" name="area_group" id="area_group">
               <option value="sure_cycle">Sure Cycle</option>
+              <option value="sme">SME</option>
+              <option value="gma_north">GMA North</option>
+              <option value="gma_south">GMA South</option>
+              <option value="north_luzon">North Luzon</option>
+              <option value="visayas">Visayas</option>
+              <option value="mindanao">Mindanao</option>
             </select>
             <label style="font-size: 12px">Branch : </label>
             <select style="font-size: 12px" name="area_branch" id="area_branch">
-                <option value="510">Digos Trike</option>
-                <option value="511">SC Koronadal</option>
-                <option value="512">SC Panabo</option>
+                <option value="510">Sample</option>
             </select>
             <label style="font-size: 12px">Month : </label>
             <select style="font-size: 12px" name="area_month" id="area_month">
@@ -152,6 +156,12 @@
                 <label style="font-size: 12px">Group : </label>
                 <select style="font-size: 12px" name="per_group" id="per_group">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">Month : </label>
                 <select style="font-size: 12px" name="month" id="month">
@@ -169,6 +179,12 @@
                 <label style="font-size: 12px">Group : </label>
                 <select style="font-size: 12px" name="annual_group" id="annual_group" disabled="">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">Year : </label>
                 <select style="font-size: 12px" name="annual_year" id="annual_year" disabled="">
@@ -178,7 +194,7 @@
                 <input style="font-size: 12px" type="button" id="annual_generate" name="annual_generate" value="Generate" disabled="">
               </div>
               <div class="card-body">
-                <canvas style="pointer-events: none;" id="myBarChart" width="100%" height="50"></canvas>
+                <canvas style="pointer-events: none;" id="myBarChart" width="100%" height="57"></canvas>
               </div>
               <div class="card-footer small text-muted"></div>
             </div>
@@ -193,13 +209,19 @@
                 <label style="font-size: 12px">Group</label>
                 <select style="font-size: 12px" name="pie_group" id="pie_group">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Branch</label>
                 <select style="font-size: 12px" name="pie_branch" id="pie_branch">
                   <option value="510">Digos Trike</option>
                   <option value="511">SC Koronadal</option>
                   <option value="512">SC Panabo</option>
-                  <option value="'510','511','512'">All Branches</option>
+                  <option value="all">All Branches</option>
                 </select><br/>&nbsp &nbsp
                 <label style="font-size: 12px">&nbsp Month</label>
                 <select style="font-size: 12px" id="pie_month" name="pie_month"></select>
@@ -208,13 +230,19 @@
                 <label style="font-size: 12px">Group</label>
                 <select style="font-size: 12px" name="pie_group1" id="pie_group1">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Branch</label>
                 <select style="font-size: 12px" name="pie_branch1" id="pie_branch1">
                   <option value="510">Digos Trike</option>
                   <option value="511">SC Koronadal</option>
                   <option value="512">SC Panabo</option>
-                  <option value="'510','511','512'">All Branches</option>
+                  <option value="all">All Branches</option>
                 </select><br/>&nbsp &nbsp
                 <label style="font-size: 12px">&nbsp Month</label>
                 <select style="font-size: 12px" id="pie_month1" name="pie_month1"></select>
@@ -228,13 +256,19 @@
                 <label style="font-size: 12px">Group</label>
                 <select style="font-size: 12px" name="pie_group2" id="pie_group2" disabled="">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Branch</label>
                 <select style="font-size: 12px" name="pie_branch2" id="pie_branch2" disabled="">
                   <option value="510">Digos Trike</option>
                   <option value="511">SC Koronadal</option>
                   <option value="512">SC Panabo</option>
-                  <option value="'510','511','512'">All Branches</option>
+                  <option value="all">All Branches</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Year</label>
                 <select style="font-size: 12px" id="pie_year2" name="pie_year2" disabled=""></select><br/>&nbsp &nbsp
@@ -242,13 +276,19 @@
                 <label style="font-size: 12px">Group</label>
                 <select style="font-size: 12px" name="pie_group3" id="pie_group3" disabled="">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Branch</label>
                 <select style="font-size: 12px" name="pie_branch3" id="pie_branch3" disabled="">
                   <option value="510">Digos Trike</option>
                   <option value="511">SC Koronadal</option>
                   <option value="512">SC Panabo</option>
-                  <option value="'510','511','512'">All Branches</option>
+                  <option value="all">All Branches</option>
                 </select>
                 <label style="font-size: 12px">&nbsp Year</label>
                 <select style="font-size: 12px" id="pie_year3" name="pie_year3" disabled=""></select>

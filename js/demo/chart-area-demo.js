@@ -84,6 +84,27 @@ $(document).ready(function()
       });
     }
   });
+
+  selected = $('#area_group').val();
+  data = {area : selected}
+  $.ajax(
+  {
+      type : "POST",
+      url : "./php/getBranches.php",
+      data : data,
+      dataType : "json",
+      success : function(data)
+      {
+        $('#area_branch').html('');
+
+        len = data.length;
+
+        for (var i = 0; i < len; i++)
+        {
+            $('#area_branch').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+        }
+      }
+  });
 })
 
 //add option in select tag with id month
@@ -101,27 +122,27 @@ for (var i = 0; i < month_length; i++)
 
 $('#area_group').change(function()
 {
-   $selected = $(this).val();
+    selected = $(this).val();
+    data = {area : selected}
+    
+    $.ajax(
+    {
+        type : "POST",
+        url : "./php/getBranches.php",
+        data : data,
+        dataType : "json",
+        success : function(data)
+        {
+          $('#area_branch').html('');
+          
+          len = data.length;
 
-   if ($selected == 'sure_cycle')
-   {
-      $('#area_branch').html('');
-
-      var branch = ['Digos Trike', 'SC Koronadal', 'SC Panabo'];
-      var code = ['510', '511', '512'];
-      var len = branch.length;
-
-      for (var i = 0; i < len; i++)
-      {
-          $('#area_branch').append($('<option>', {value:code[i], text:branch[i]}));
-      }
-   }
-   else
-   {
-      $('#area_branch').html('');
-
-      $('#area_branch').append($('<option>', {value:'sample', text:'sample'}));
-   }
+          for (var i = 0; i < len; i++)
+          {
+              $('#area_branch').append($('<option>', {value:data[i]['code'], text:data[i]['branch']}));
+          }
+        }
+    });
 })
 
 function formatNumber(num) 
