@@ -98,7 +98,7 @@
                     color.push("green");
                 }
 
-                label.push(data[i]['branch'] + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
+                label.push(data[i]['branch'] + ' - (P '+amountView+') ' + percent.toFixed(2) + '%');
             }
 
             var ctx = document.getElementById("myBarChart");
@@ -206,7 +206,7 @@
                 color.push("green");
             }
 
-            label.push(data[i]['branch'] + ' (P '+amountView+') ' + percent.toFixed(2) + '%');
+            label.push(data[i]['branch'] + ' - (P '+amountView+') ' + percent.toFixed(2) + '%');
         }
 
         var ctx = document.getElementById("myBarChart");

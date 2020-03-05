@@ -75,7 +75,7 @@ $(document).ready(function()
               var sales = data[i]['daily_sales'];
               var date = data[i]['date'];
 
-              labels.push(date + " (" + formatNumber(parseInt(sales)) + ")");
+              labels.push(date + " ( P " + formatNumber(parseInt(sales)) + " )");
               datas.push(sales);
             }
 
@@ -184,7 +184,7 @@ $('#area_generate').on('click', function()
             var sales = data[i]['daily_sales'];
             var date = data[i]['date'];
 
-            labels.push(date + " (" + formatNumber(parseInt(sales)) + ")");
+            labels.push(date + " ( P " + formatNumber(parseInt(sales)) + " )");
             datas.push(sales);
           }
 
