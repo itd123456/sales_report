@@ -313,7 +313,7 @@ function pieGraphh()
 	    	percent2 = percent2.toFixed(2);
 
 	    	blue = group11 + ' (' + branch11 + ') ' + month11 + ' ' + year11 + ' - [ P ' + formatNumber(total1) + ' ( ' + percent1+ '% ) ]';
-	    	red =  group22 + ' (' + branch22 + ') ' + month22 + ' ' + year22 + ' - [ P ' + formatNumber(total2) + ' ( ' + percent1+ '% ) ]';
+	    	red =  group22 + ' (' + branch22 + ') ' + month22 + ' ' + year22 + ' - [ P ' + formatNumber(total2) + ' ( ' + percent2+ '% ) ]';
 
 	    	labels = [blue, red];
 

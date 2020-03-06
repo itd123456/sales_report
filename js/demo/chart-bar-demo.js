@@ -45,17 +45,25 @@
       group = $('#annual_group').val();
       year = $('#annual_year').val();
       time_frame = "annually";
+      isAll = 0;
+
+      if (group == 'all')
+      {
+        isAll = 1;
+      }
       data = 
       {
           group : group,
           year : year,
-          time_frame : time_frame
+          time_frame : time_frame,
+          isAll : isAll
       }
 
       max = parseInt($('#annual_target').val());
       var label = [];
       var value = [];
       var color = [];
+      var branches = [];
 
       $.ajax(
         {
@@ -65,7 +73,6 @@
           dataType: "json",  
           success : function(data)
           {
-            console.log(data);
             Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
             Chart.defaults.global.defaultFontColor = '#292b2c';
 
@@ -76,7 +83,7 @@
             {
                 //sales amount
                 var amount = parseInt(data[i].total);
-                console.log(amount);
+                
                 //format the amount
                 var amountView = formatNumber(amount);
                 //get the percentage
@@ -98,7 +105,8 @@
                     color.push("green");
                 }
 
-                label.push(data[i]['branch'] + ' - (P '+amountView+') ' + percent.toFixed(2) + '%');
+                branches.push(data[i]['branch']);
+                label.push('P '+amountView+ ' ( ' + percent.toFixed(2) + '% )');
             }
 
             var ctx = document.getElementById("myBarChart");
@@ -111,6 +119,7 @@
                   backgroundColor: color,
                   borderColor: "rgba(2,117,216,1)",
                   data: value,
+                  branches: branches
                 }],
               },
               options: {
@@ -139,7 +148,21 @@
                 },
                 legend: {
                   display: false
+                },
+                animation: {
+                onComplete: function () {
+                  var chartInstance = this.chart;
+                  var ctx = chartInstance.ctx;
+                  var height = chartInstance.controller.boxes[0].bottom;
+                  ctx.textAlign = "center";
+                  Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    Chart.helpers.each(meta.data.forEach(function (bar, index) {
+                      ctx.fillText(dataset.branches[index], bar._model.x, height - ((height - bar._model.y)) - 10);
+                    }),this)
+                  }),this);
                 }
+              }
               }
             });
           }
@@ -158,6 +181,13 @@
     month = $('#month').val();
     year = $('#year').val();
     time_frame = "monthly";
+    isAll = 0;
+      
+    if (group == 'all')
+    {
+      isAll = 1;
+    }
+      
 
     max = parseInt($('#target').val());
     var label = [];
@@ -171,7 +201,8 @@
       data: {group : group,
              month : month,
              year : year,
-             time_frame : time_frame},             
+             time_frame : time_frame,
+             isAll : isAll},             
       dataType: "json",            
       success: function(data)
       {                    

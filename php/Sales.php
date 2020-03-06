@@ -3,18 +3,18 @@
 	Class Sales
 	{
 		//Localhost Credentials
-		// private $host = 'localhost';
-		// private $user = 'root';
-		// private $pass = '123456';
-		// private $db = 'sales_report';
-		// private $conn;
+		private $host = 'localhost';
+		private $user = 'root';
+		private $pass = '123456';
+		private $db = 'sales_report';
+		private $conn;
 
 		//Linux Credentials
-		private $host = "localhost";
-		private $user = "network";
-		private $pass = 'P@$$w0rd2020!';
-		private $db = "sales_report";
-		private $conn;
+		// private $host = "localhost";
+		// private $user = "network";
+		// private $pass = 'P@$$w0rd2020!';
+		// private $db = "sales_report";
+		// private $conn;
 
 		public function __construct()
 		{
@@ -23,19 +23,43 @@
 			$this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->db, $this->user, $this->pass);
 		}
 
-		public function getTotalSales($first, $last, $table)
+		public function getTotalSales($first, $last, $table, $isAll)
 		{
-			$sql = "SELECT SUM(t.daily_sales) AS total, t.branch_code, b.branch
+			if ($isAll == 0)
+			{
+				$sql = "SELECT SUM(t.daily_sales) AS total, t.branch_code, b.branch
 					FROM $table t
 					JOIN branch b
 					ON t.branch_code = b.code
 					WHERE t.date_sales BETWEEN '$first'
 					AND '$last'
 					GROUP BY t.branch_code, b.branch";
-			$stmt = $this->conn->prepare($sql);
-			$stmt->execute(array());
-			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			
+				$stmt = $this->conn->prepare($sql);
+				$stmt->execute(array());
+				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+			else
+			{
+				$totalSales = 0;
+
+				$tables = ['sme', 'sure_cycle', 'north_luzon', 'gma_north', 'gma_south', 'visayas', 'mindanao'];
+
+				for ($i = 0; $i < count($tables); $i++)
+				{
+					$sql = "SELECT SUM(daily_sales) AS total
+							FROM $tables[$i]
+							WHERE date_sales BETWEEN '$first'
+							AND '$last'";
+					$stmt = $this->conn->prepare($sql);
+					$stmt->execute(array());
+					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+					$totalSales += $result[0]['total'];
+				}
+				$result[0]['total'] = $totalSales;
+				$result[0]['branch'] = 'All Areas';
+			}
+
 			print json_encode($result);
 		}
 

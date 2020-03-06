@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Charts</title>
+  <title>Sales Report</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,63 +26,11 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand mr-1" href="index.html">Sales Report</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <!-- <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw"></i>
-          <span class="badge badge-danger">9+</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-envelope fa-fw"></i>
-          <span class="badge badge-danger">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
-      </li>
-    </ul>
-
   </nav>
 
   <div id="wrapper">
@@ -94,32 +42,6 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
       </li>
     </ul>
 
@@ -135,117 +57,195 @@
           <li class="breadcrumb-item active">Charts</li>
         </ol>
 
-        <!-- Area Chart Example-->
+       <!-- Area Chart Example-->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Area Chart <br/>
-            <label style="font-size: 12px">Group : </label>
-            <select style="font-size: 12px" name="area_group" id="area_group">
+            <i class="fas fa-chart-bar"></i>
+            Monthly and Anually Sales <br/>
+
+            <!-- Monthly -->
+            <input type="radio" name="monthly" id="monthly" checked="true">
+            <label style="font-size: 12px">(Monthly) &nbsp &nbsp &nbsp </label>
+            <label style="font-size: 12px">Area : </label>
+            <select style="font-size: 12px" name="per_group" id="per_group">
               <option value="sure_cycle">Sure Cycle</option>
-              <option value="sample">Sample</option>
-            </select>
-            <label style="font-size: 12px">Branch : </label>
-            <select style="font-size: 12px" name="area_branch" id="area_branch">
-                <option value="sample"> example </option>
+              <option value="sme">SME</option>
+              <option value="gma_north">GMA North</option>
+              <option value="gma_south">GMA South</option>
+              <option value="north_luzon">North Luzon</option>
+              <option value="visayas">Visayas</option>
+              <option value="mindanao">Mindanao</option>
+              <option value="all">All Areas</option>
             </select>
             <label style="font-size: 12px">Month : </label>
-            <select style="font-size: 12px" name="area_month" id="area_month">
+            <select style="font-size: 12px" name="month" id="month">
             </select>
             <label style="font-size: 12px">Year : </label>
-            <select style="font-size: 12px" name="area_year" id="area_year">
+            <select style="font-size: 12px" name="year" id="year">
             </select>
-            <label style="font-size: 12px">Daily Target : </label> 
-            <input style="font-size: 12px" type="number" name="area_target" id="area_target" value = 100000>
-            <input style="font-size: 12px" type="button" id="area_generate" name="area_generate" value="Generate">
+            <label style="font-size: 12px">Monthly Target : </label> 
+            <input style="font-size: 12px" type="number" name="target" id="target" value = 3000000>
+            <input style="font-size: 12px" type="button" id="sure_cycle" name="sure_cycle" value="Generate"><br/>
+
+            <!-- Annually -->
+            <input type="radio" name="annually" id="annually">
+            <label style="font-size: 12px">(Annually)&nbsp &nbsp &nbsp </label>
+            <label style="font-size: 12px">Area : </label>
+            <select style="font-size: 12px" name="annual_group" id="annual_group" disabled="">
+              <option value="sure_cycle">Sure Cycle</option>
+              <option value="sme">SME</option>
+              <option value="gma_north">GMA North</option>
+              <option value="gma_south">GMA South</option>
+              <option value="north_luzon">North Luzon</option>
+              <option value="visayas">Visayas</option>
+              <option value="mindanao">Mindanao</option>
+              <option value="all">All Areas</option>
+            </select>
+            <label style="font-size: 12px">Year : </label>
+            <select style="font-size: 12px" name="annual_year" id="annual_year" disabled="">
+            </select>
+            <label style="font-size: 12px">Annually Target : </label> 
+            <input style="font-size: 12px" type="number" name="annual_target" id="annual_target" value = 50000000 disabled="">
+            <input style="font-size: 12px" type="button" id="annual_generate" name="annual_generate" value="Generate" disabled="">
           </div>
           <div class="card-body">
-            <canvas style="pointer-events: none;" id="myAreaChart" width="100%" height="30"></canvas>
+            <canvas style="pointer-events: none;" id="myBarChart" width="100%" height="30"></canvas>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="card-footer small text-muted"></div>
         </div>
 
         <div class="row">
           <div class="col-lg-8">
             <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-bar"></i>
-                Bar Chart <br/>
-
-                <!-- Monthly -->
-                <input type="radio" name="monthly" id="monthly" checked="true">
-                <label style="font-size: 12px">(Monthly) &nbsp &nbsp &nbsp </label>
-                <label style="font-size: 12px">Group : </label>
-                <select style="font-size: 12px" name="per_group" id="per_group">
-                  <option value="sure_cycle">Sure Cycle</option>
-                </select>
-                <label style="font-size: 12px">Month : </label>
-                <select style="font-size: 12px" name="month" id="month">
-                </select>
-                <label style="font-size: 12px">Year : </label>
-                <select style="font-size: 12px" name="year" id="year">
-                </select>
-                <label style="font-size: 12px">Monthly Target : </label> 
-                <input style="font-size: 12px" type="number" name="target" id="target" value = 3000000>
-                <input style="font-size: 12px" type="button" id="sure_cycle" name="sure_cycle" value="Generate"><br/>
-
-                <!-- Annually -->
-                <input type="radio" name="annually" id="annually">
-                <label style="font-size: 12px">(Annually) &nbsp &nbsp &nbsp </label>
-                <label style="font-size: 12px">Group : </label>
-                <select style="font-size: 12px" name="annual_group" id="annual_group" disabled="">
-                  <option value="sure_cycle">Sure Cycle</option>
-                </select>
-                <label style="font-size: 12px">Year : </label>
-                <select style="font-size: 12px" name="annual_year" id="annual_year" disabled="">
-                </select>
-                <label style="font-size: 12px">Annually Target : </label> 
-                <input style="font-size: 12px" type="number" name="annual_target" id="annual_target" value = 50000000 disabled="">
-                <input style="font-size: 12px" type="button" id="annual_generate" name="annual_generate" value="Generate" disabled="">
-              </div>
-              <div class="card-body">
-                <canvas style="pointer-events: none;" id="myBarChart" width="100%" height="50"></canvas>
-              </div>
+            <div class="card-header">
+              <i class="fas fa-chart-area"></i>
+              Daily Sales <br/>
+              <label style="font-size: 12px">Area : </label>
+              <select style="font-size: 12px" name="area_group" id="area_group">
+                <option value="sure_cycle">Sure Cycle</option>
+                <option value="sme">SME</option>
+                <option value="gma_north">GMA North</option>
+                <option value="gma_south">GMA South</option>
+                <option value="north_luzon">North Luzon</option>
+                <option value="visayas">Visayas</option>
+                <option value="mindanao">Mindanao</option>
+              </select>
+              <label style="font-size: 12px">Branch : </label>
+              <select style="font-size: 12px" name="area_branch" id="area_branch">
+                  <option value="510">Sample</option>
+              </select>
+              <label style="font-size: 12px">Month : </label>
+              <select style="font-size: 12px" name="area_month" id="area_month">
+              </select>
+              <label style="font-size: 12px">Year : </label>
+              <select style="font-size: 12px" name="area_year" id="area_year">
+              </select>
+              <label style="font-size: 12px">Daily Target : </label> 
+              <input style="font-size: 12px" type="number" name="area_target" id="area_target" value = 300000>
+              <input style="font-size: 12px" type="button" id="area_generate" name="area_generate" value="Generate">
             </div>
+            <div class="card-body">
+              <canvas style="pointer-events: none;" id="myAreaChart" width="100%" height="61"></canvas>
+            </div>
+            <div class="card-footer small text-muted"></div>
+        </div>
           </div>
           <div class="col-lg-4">
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-chart-pie"></i>
-                Pie Chart Example<br/>
-                <input type="radio" name="month_vs_month" id="month_vs_month">
-                <label style="font-size: 12px">Month vs Month</label><br/>&nbsp &nbsp
-                <label style="font-size: 12px">Group</label>
+                Month to Month and Year to Year<br/>
+                <input type="radio" name="month_vs_month" id="month_vs_month" checked="true">
+                <label style="font-size: 12px">Month to Month</label>&nbsp <button id="vsMon" name="vsMon" style="font-size: 12px">Generate Month to Month</button><br/>&nbsp &nbsp
+                <label style="font-size: 12px">Area :</label>
                 <select style="font-size: 12px" name="pie_group" id="pie_group">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
-                <label style="font-size: 12px">&nbsp Branch</label>
+                <label style="font-size: 12px">&nbsp Branch :</label>
                 <select style="font-size: 12px" name="pie_branch" id="pie_branch">
-                  <option value="sample">sample</option>
-                </select>
-                <label style="font-size: 12px">&nbsp Month</label>
+                  <option value="510">Digos Trike</option>
+                  <option value="511">SC Koronadal</option>
+                  <option value="512">SC Panabo</option>
+                  <option value="all">All Branches</option>
+                </select><br/>&nbsp &nbsp
+                <label style="font-size: 12px">Month :</label>
                 <select style="font-size: 12px" id="pie_month" name="pie_month"></select>
-                <label style="font-size: 12px">&nbsp Year</label>
+                <label style="font-size: 12px">&nbsp Year :</label>
                 <select style="font-size: 12px" id="pie_year" name="pie_year"></select><br/>&nbsp &nbsp
-
-                <label style="font-size: 12px">Group</label>
-                <select style="font-size: 12px" name="pie_group1" id="pie_group">
+                <label style="font-size: 12px">Area :</label>
+                <select style="font-size: 12px" name="pie_group1" id="pie_group1">
                   <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
                 </select>
-                <label style="font-size: 12px">&nbsp Branch</label>
-                <select style="font-size: 12px" name="pie_branch1" id="pie_branch">
-                  <option value="sample">sample</option>
-                </select>
-                <label style="font-size: 12px">&nbsp Month</label>
-                <select style="font-size: 12px" id="pie_month1" name="pie_month"></select>
-                <label style="font-size: 12px">&nbsp Year</label>
-                <select style="font-size: 12px" id="pie_year1" name="pie_year"></select>
+                <label style="font-size: 12px">&nbsp Branch :</label>
+                <select style="font-size: 12px" name="pie_branch1" id="pie_branch1">
+                  <option value="510">Digos Trike</option>
+                  <option value="511">SC Koronadal</option>
+                  <option value="512">SC Panabo</option>
+                  <option value="all">All Branches</option>
+                </select><br/>&nbsp &nbsp
+                <label style="font-size: 12px">Month :</label>
+                <select style="font-size: 12px" id="pie_month1" name="pie_month1"></select>
+                <label style="font-size: 12px">&nbsp Year :</label>
+                <select style="font-size: 12px" id="pie_year1" name="pie_year1"></select><br/><br/>
 
+                <input type="radio" name="yr_vs_yr" id="yr_vs_yr">
+                <label style="font-size: 12px">Year to Year</label> &nbsp <button id="vsYear" name="vsYear" style="font-size: 12px" disabled="">Generate Year to Year</button><br/>&nbsp &nbsp
+                <label style="font-size: 12px">Area :</label>
+                <select style="font-size: 12px" name="pie_group2" id="pie_group2" disabled="">
+                  <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
+                </select>
+                <label style="font-size: 12px">&nbsp Branch :</label>
+                <select style="font-size: 12px" name="pie_branch2" id="pie_branch2" disabled="">
+                  <option value="510">Digos Trike</option>
+                  <option value="511">SC Koronadal</option>
+                  <option value="512">SC Panabo</option>
+                  <option value="all">All Branches</option>
+                </select>
+                <label style="font-size: 12px">&nbsp Year :</label>
+                <select style="font-size: 12px" id="pie_year2" name="pie_year2" disabled=""></select><br/>&nbsp &nbsp
+
+                <label style="font-size: 12px">Area :</label>
+                <select style="font-size: 12px" name="pie_group3" id="pie_group3" disabled="">
+                  <option value="sure_cycle">Sure Cycle</option>
+                  <option value="sme">SME</option>
+                  <option value="gma_north">GMA North</option>
+                  <option value="gma_south">GMA South</option>
+                  <option value="north_luzon">North Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
+                </select>
+                <label style="font-size: 12px">&nbsp Branch :</label>
+                <select style="font-size: 12px" name="pie_branch3" id="pie_branch3" disabled="">
+                  <option value="510">Digos Trike</option>
+                  <option value="511">SC Koronadal</option>
+                  <option value="512">SC Panabo</option>
+                  <option value="all">All Branches</option>
+                </select>
+                <label style="font-size: 12px">&nbsp Year :</label>
+                <select style="font-size: 12px" id="pie_year3" name="pie_year3" disabled=""></select>
               </div>
               <div class="card-body">
-                <canvas id="myPieChart" width="100%" height="100"></canvas>
+                <canvas style="pointer-events: none;" id="myPieChart" width="100%" height="84"></canvas>
               </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div class="card-footer small text-muted"></div>
             </div>
           </div>
         </div>

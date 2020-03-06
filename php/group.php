@@ -5,7 +5,8 @@
 	$time_frame = $_POST['time_frame'];
 	$chosen_group = $_POST['group'];
 	$year = $_POST['year'];
-
+	$isAll = $_POST['isAll'];
+	
 	if ($time_frame == "monthly")
 	{
 		$month = $_POST['month'];
@@ -20,5 +21,5 @@
 		$last = $year.'-12-31';
 	}
 	
-	$sales = $group->getTotalSales($first, $last, $chosen_group);
+	$sales = $group->getTotalSales($first, $last, $chosen_group, $isAll);
 ?>
