@@ -15,7 +15,7 @@
 		// private $mysqlPass = '123456';
 		// private $mysqlConn;
 
-		Linux Credentials
+		//Linux Credentials
 		private $mysqlHost = 'localhost';
 		private $mysqlDB = 'sales_report';
 		private $mysqlUser = 'network';

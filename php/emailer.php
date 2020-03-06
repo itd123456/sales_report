@@ -36,7 +36,7 @@ try {
     $mail->Host       = 'smtp.office365.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'helpdesk@gdfi.ph';                     // SMTP username
-    $mail->Password   = 'Sysad04!';                               // SMTP password
+    $mail->Password   = 'K@lboK@lb0!';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
     $mail->SMTPOptions = array(
@@ -49,7 +49,7 @@ try {
 
     //Recipients
     $mail->setFrom('helpdesk@gdfi.ph', 'Mailer');
-    $mail->addAddress('johndee.pandaan.velasco@gmail.com', 'Joe User');     // 
+    $mail->addAddress($email, 'Sales Report');     // 
 
     // Content
     $mail->isHTML(true);    

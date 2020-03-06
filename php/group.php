@@ -19,6 +19,6 @@
 		$first = $year.'-01-01';
 		$last = $year.'-12-31';
 	}
-
+	
 	$sales = $group->getTotalSales($first, $last, $chosen_group);
 ?>
