@@ -7,28 +7,30 @@
 
 	$year = $cron->insertYear();
 
+	$truncate = $cron->truncateTables();
+
 	$today = $cron->getCurrentDate();
 
-	$scSales = $cron->getSc($today);
-	$cron->insertSCData($scSales, 'sure_cycle');
+	// $scSales = $cron->getSc($today);
+	// $cron->insertSCData($scSales, 'sure_cycle');
 
-	$sme = $cron->getSME($today);
-	$cron->insertSCData($sme, 'sme');
+	// $sme = $cron->getSME($today);
+	// $cron->insertSCData($sme, 'sme');
 
-	$gmaNorth = $cron->getOthers($today, 'GMA North');
-	$cron->insertSCData($gmaNorth, 'gma_north');
+	// $gmaNorth = $cron->getOthers($today, 'GMA North');
+	// $cron->insertSCData($gmaNorth, 'gma_north');
 
-	$gmaSouth = $cron->getOthers($today, 'GMA South');
-	$cron->insertSCData($gmaSouth, 'gma_south');
+	// $gmaSouth = $cron->getOthers($today, 'GMA South');
+	// $cron->insertSCData($gmaSouth, 'gma_south');
 
-	$northLuzon = $cron->getOthers($today, 'North Luzon');
-	$cron->insertSCData($northLuzon, 'north_luzon');
+	// $northLuzon = $cron->getOthers($today, 'North Luzon');
+	// $cron->insertSCData($northLuzon, 'north_luzon');
 
-	$visayas = $cron->getOthers($today, 'Visayas');
-	$cron->insertSCData($visayas, 'visayas');
+	// $visayas = $cron->getOthers($today, 'Visayas');
+	// $cron->insertSCData($visayas, 'visayas');
 	
-	$mindanao = $cron->getOthers($today, 'Mindanao');
-	$cron->insertSCData($mindanao, 'mindanao');
+	// $mindanao = $cron->getOthers($today, 'Mindanao');
+	// $cron->insertSCData($mindanao, 'mindanao');
 	
 
 	// $area = ['gma_north', 'gma_south', 'north_luzon', 'visayas', 'mindanao', 'sme', 'sure_cycle'];
@@ -48,40 +50,42 @@
 	// 	$cron->execQuery($sql);
 	// }
 	
-	// $Date =  '2017/10/23';
-	// do
-	// {
-	// 	$Date = str_replace('/', '-', $Date);
-	// 	$Date = date('Y-m-d', strtotime($Date));
-	// 	$Date = date('Y/m/d', strtotime($Date. "+1 day"));
+	$endDate = str_replace('-', '/', $today); 
 
-	// 	//Sure Cycle
-	// 	$scSales = $cron->getSc($Date);
-	// 	$insertSCSales = $cron->insertSCData($scSales, 'sure_cycle');
+	$Date =  '2017/10/23';
+	do
+	{
+		$Date = str_replace('/', '-', $Date);
+		$Date = date('Y-m-d', strtotime($Date));
+		$Date = date('Y/m/d', strtotime($Date. "+1 day"));
 
-	// 	//SME
-	// 	$sme = $cron->getSME($Date);
-	// 	$cron->insertSCData($sme, 'sme');
+		//Sure Cycle
+		$scSales = $cron->getSc($Date);
+		$insertSCSales = $cron->insertSCData($scSales, 'sure_cycle');
 
-	// 	// //GMA North
-	// 	$gmaNorth = $cron->getOthers($Date, 'GMA North');
-	// 	$cron->insertSCData($gmaNorth, 'gma_north');
+		//SME
+		$sme = $cron->getSME($Date);
+		$cron->insertSCData($sme, 'sme');
 
-	// 	// //GMA South
-	// 	$gmaSouth = $cron->getOthers($Date, 'GMA South');
-	// 	$cron->insertSCData($gmaSouth, 'gma_south');
+		// //GMA North
+		$gmaNorth = $cron->getOthers($Date, 'GMA North');
+		$cron->insertSCData($gmaNorth, 'gma_north');
 
-	// 	// //North Luzon
-	// 	$northLuzon = $cron->getOthers($Date, 'North Luzon');
-	// 	$cron->insertSCData($northLuzon, 'north_luzon');
+		// //GMA South
+		$gmaSouth = $cron->getOthers($Date, 'GMA South');
+		$cron->insertSCData($gmaSouth, 'gma_south');
 
-	// 	// //Visayas
-	// 	$visayas = $cron->getOthers($Date, 'Visayas');
-	// 	$cron->insertSCData($visayas, 'visayas');
+		// //North Luzon
+		$northLuzon = $cron->getOthers($Date, 'North Luzon');
+		$cron->insertSCData($northLuzon, 'north_luzon');
+
+		// //Visayas
+		$visayas = $cron->getOthers($Date, 'Visayas');
+		$cron->insertSCData($visayas, 'visayas');
 		
-	// 	// //Mindanao
-	// 	$mindanao = $cron->getOthers($Date, 'Mindanao');
-	// 	$cron->insertSCData($mindanao, 'mindanao');
+		// //Mindanao
+		$mindanao = $cron->getOthers($Date, 'Mindanao');
+		$cron->insertSCData($mindanao, 'mindanao');
 
-	// }while($Date != '2020/03/04');
+	}while($Date != $endDate);
 ?>

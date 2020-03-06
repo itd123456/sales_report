@@ -35,6 +35,19 @@
 			$this->mysqlConn = new PDO("mysql:host=".$this->mysqlHost.";dbname=".$this->mysqlDB, $this->mysqlUser, $this->mysqlPass);
 		}
 
+		public function truncateTables()
+		{
+			$tables = ['sure_cycle', 'sme', 'north_luzon', 'visayas', 'mindanao', 'gma_north', 'gma_south'];
+
+			for ($i = 0; $i < count($tables); $i++)
+			{
+				$sql = "TRUNCATE TABLE $tables[$i]";
+
+				$stmt = $this->mysqlConn->prepare($sql);
+				$stmt->execute();
+			}
+		}
+
 		public function getCurrentDate()
 		{
 			$currentDate = date('Y-m-d');
@@ -77,6 +90,7 @@
 					WHERE LOAN_RELEASED_DATE = '$today'
 					AND LOAN_BR IN(510,511,512)
 					AND LOAN_STATUS = 5
+					AND LOAN_APP_TYPE != 3
 					GROUP BY LOAN_BR, LOAN_RELEASED_DATE";
 
 			//prepare the sql query for execution
@@ -96,6 +110,7 @@
 					WHERE LOAN_RELEASED_DATE = '$today'
 					AND LOAN_BR IN(109,112,114)
 					AND LOAN_STATUS = 5
+					AND LOAN_APP_TYPE != 3
 					GROUP BY LOAN_BR, LOAN_RELEASED_DATE";
 
 			//prepare the sql query for execution
@@ -117,6 +132,7 @@
 					WHERE l.LOAN_RELEASED_DATE = '$today'
 					AND p.BRAN_URL = '$area'
 					AND l.LOAN_STATUS = 5
+					AND l.LOAN_APP_TYPE != 3
 					GROUP BY l.LOAN_BR, l.LOAN_RELEASED_DATE";
 
 			//prepare the sql query for execution
