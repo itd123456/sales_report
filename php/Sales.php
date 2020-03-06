@@ -3,18 +3,18 @@
 	Class Sales
 	{
 		//Localhost Credentials
-		private $host = 'localhost';
-		private $user = 'root';
-		private $pass = '123456';
-		private $db = 'sales_report';
-		private $conn;
+		// private $host = 'localhost';
+		// private $user = 'root';
+		// private $pass = '123456';
+		// private $db = 'sales_report';
+		// private $conn;
 
 		//Linux Credentials
-		// private $host = "localhost";
-		// private $user = "network";
-		// private $pass = 'P@$$w0rd2020!';
-		// private $db = "sales_report";
-		// private $conn;
+		private $host = "localhost";
+		private $user = "network";
+		private $pass = 'P@$$w0rd2020!';
+		private $db = "sales_report";
+		private $conn;
 
 		public function __construct()
 		{
